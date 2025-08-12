@@ -7,7 +7,6 @@ import path from 'path';
 
 import applyMiddlewares from './utils/middleware.js';
 import connectDB from './config/db.js';
-import { socketConnect } from './routes/supplier.js';
 import mountRoutes from './utils/routes.js';
 import logoutInactiveUsers from './helper/logoutInactiveUsers.js';
 
@@ -30,7 +29,6 @@ const io = new Server(server, {
 
 app.set('io', io);
 io.on('connection', (socket) => {
-  socketConnect(io);
   socket.on('disconnect', () => {});
 });
 
@@ -46,7 +44,7 @@ mountRoutes(app);
 
 // for all other routes, send the index.html file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'yussman-client', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
 server.listen(process.env.PORT, () => {});

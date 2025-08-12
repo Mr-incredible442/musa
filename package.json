@@ -1,13 +1,13 @@
 {
-  "name": "yussman-backend",
+  "name": "musa",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "concurrently \"nodemon server.js\" \"cd yussman-client && npm run dev\"",
-    "postinstall": "cd yussman-client && npm install --include=dev && npm run build && npm prune --production"
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm run dev\"",
+    "postinstall": "cd client && npm install --include=dev && npm run build && npm prune --production"
   },
   "keywords": [],
   "author": "",

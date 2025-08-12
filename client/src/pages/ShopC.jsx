@@ -22,7 +22,7 @@ function ShopC() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    document.title = 'Yussman - Shop Boma';
+    document.title = 'Shop';
   }, []);
 
   const handleTabSelect = (selectedTab) => {

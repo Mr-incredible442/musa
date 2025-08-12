@@ -12,7 +12,7 @@ import { ShopCContextProvider } from '../context/ShopCContext';
 
 function Register() {
   useEffect(() => {
-    document.title = 'Yussman -Boma Register';
+    document.title = 'Register';
   }, []);
 
   return (

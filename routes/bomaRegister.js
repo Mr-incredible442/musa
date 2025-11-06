@@ -7,7 +7,22 @@ import Register from '../model/BomaRegister.schema.js';
 
 router.get('/', async (req, res) => {
   try {
-    const register = await Register.findOne().sort({ _id: -1 }).limit(1);
+    let register = await Register.findOne().sort({ _id: -1 }).limit(1);
+
+    // Auto-create a shift if none exists
+    if (!register) {
+      const emptyShift = new Register({
+        date: '',
+        name: '',
+        accountant: '',
+        cash: 0,
+        change: 0,
+        stock: [],
+        expense: [],
+        status: 'current',
+      });
+      register = await emptyShift.save();
+    }
 
     res.json(register);
     req.app.get('io').emit('bomaregister', register);

@@ -6,7 +6,22 @@ import Store from '../model/BomaStore.schema.js';
 
 router.get('/', async (req, res) => {
   try {
-    const store = await Store.findOne().sort({ _id: -1 }).limit(1);
+    let store = await Store.findOne().sort({ _id: -1 }).limit(1);
+
+    // Auto-create a shift if none exists
+    if (!store) {
+      const emptyShift = new Store({
+        date: '',
+        accountant: '',
+        checkedBy: '',
+        keeper: '',
+        issued: [],
+        received: [],
+        stock: [],
+        shops: [],
+      });
+      store = await emptyShift.save();
+    }
 
     res.json(store);
     req.app.get('io').emit('bomastore', store);
@@ -139,7 +154,7 @@ router.post('/:id/addtostock', async (req, res) => {
       { $unwind: '$stock' },
       { $group: { _id: null, maxCode: { $max: '$stock.code' } } },
     ]);
-    const generatedCode = (maxCodeResult[0]?.maxCode || 26999) + 1;
+    const generatedCode = (maxCodeResult[0]?.maxCode || 4999) + 1;
 
     const updatedShift = await Store.findByIdAndUpdate(
       id,

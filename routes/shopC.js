@@ -18,7 +18,24 @@ router.get('/shifts', async (req, res) => {
 // get the current shift
 router.get('/', async (req, res) => {
   try {
-    const shift = await Shift.findOne().sort({ _id: -1 }).limit(1);
+    let shift = await Shift.findOne().sort({ _id: -1 }).limit(1);
+
+    // Auto-create a shift if none exists
+    if (!shift) {
+      const emptyShift = new Shift({
+        dateIn: '',
+        dateOut: '',
+        checkedBy: '',
+        cashier: [],
+        credit: [],
+        cash: [],
+        received: [],
+        acountant: '',
+        status: 'current',
+        stock: [],
+      });
+      shift = await emptyShift.save();
+    }
 
     res.json(shift);
     req.app.get('io').emit('shopc', shift);
@@ -52,7 +69,7 @@ router.post('/:id/addtostock', async (req, res) => {
       { $group: { _id: null, maxCode: { $max: '$stock.code' } } },
     ]);
 
-    const generatedCode = (maxCodeResult[0]?.maxCode || 59999) + 1;
+    const generatedCode = (maxCodeResult[0]?.maxCode || 999) + 1;
 
     const updatedShift = await Shift.findByIdAndUpdate(
       id,

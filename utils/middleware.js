@@ -50,6 +50,7 @@ export default function applyMiddlewares(app) {
             'https://cloud.umami.is',
             'https://challenges.cloudflare.com',
             'https://api-gateway.umami.dev',
+            'https://muspa-app-gf9c6.ondigitalocean.app',
           ],
           'frame-src': ['https://challenges.cloudflare.com'],
         },

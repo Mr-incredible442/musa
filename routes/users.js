@@ -13,26 +13,9 @@ const router = express.Router();
 
 // login route
 router.post('/login', async (req, res) => {
-  const { number, password, turnstileToken } = req.body;
-
-  if (!turnstileToken) {
-    return res.status(400).json({ msg: 'CAPTCHA verification failed' });
-  }
+  const { number, password } = req.body;
 
   try {
-    // Verify Turnstile token with Cloudflare
-    const verifyResponse = await axios.post(
-      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
-      new URLSearchParams({
-        secret: process.env.TURNSTILE_SECRET,
-        response: turnstileToken,
-      }),
-    );
-
-    if (!verifyResponse.data.success) {
-      return res.status(400).json({ msg: 'CAPTCHA verification failed' });
-    }
-
     if (!number || !password) {
       return res.status(400).json({ msg: 'All fields must be filled' });
     }

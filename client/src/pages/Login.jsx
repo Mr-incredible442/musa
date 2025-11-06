@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import Turnstile from 'react-turnstile';
 
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -16,14 +15,10 @@ function Login() {
     document.title = 'Muspa - Login';
   }, []);
 
-  const sitekeys = import.meta.env.VITE_SITEKEY;
-
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [captchaLoaded, setCaptchaLoaded] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState('');
   const [numberError, setNumberError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -80,17 +75,10 @@ function Login() {
       return;
     }
 
-    if (!turnstileToken) {
-      setError('Please complete the CAPTCHA');
-      setLoading(false);
-      return;
-    }
-
     axios
       .post(`${LOCAL_URL}/users/login`, {
         number,
         password,
-        turnstileToken,
       })
       .then((res) => {
         dispatch({ type: 'LOGIN', payload: res.data.user });
@@ -167,39 +155,7 @@ function Login() {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <div
-            className='mb-3'
-            style={{
-              width: '100%',
-              maxWidth: '300px',
-              height: '65px',
-              border: '1px solid #515252',
-            }}>
-            {!captchaLoaded && (
-              <Spinner animation='border' role='status' className='ms-4 mt-3'>
-                <span className='visually-hidden'>Loading...</span>
-              </Spinner>
-            )}
-            <Turnstile
-              sitekey={sitekeys}
-              onVerify={(token) => setTurnstileToken(token)}
-              onError={() => {
-                setTurnstileToken('');
-                setCaptchaLoaded(false);
-                setError('CAPTCHA failed to load. Please refresh the page.');
-              }}
-              onExpire={() => {
-                setTurnstileToken('');
-                setError('CAPTCHA expired. Please refresh the page.');
-              }}
-              onLoad={() => setCaptchaLoaded(true)}
-              fixedSize={true}
-            />
-          </div>
-          <Button
-            variant='primary'
-            type='submit'
-            disabled={loading || !turnstileToken || !captchaLoaded}>
+          <Button variant='primary' type='submit' disabled={loading}>
             {loading ? (
               <>
                 <Spinner

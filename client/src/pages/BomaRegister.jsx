@@ -12,7 +12,7 @@ import { ShopCContextProvider } from '../context/ShopCContext';
 
 function Register() {
   useEffect(() => {
-    document.title = 'Register';
+    document.title = 'Muspa - Register';
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Dasboard() {
   useEffect(() => {
-    document.title = 'Yussman';
+    document.title = 'Muspa - Dashboard';
   }, []);
   return (
     <Container>

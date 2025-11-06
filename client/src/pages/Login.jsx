@@ -13,7 +13,7 @@ import { AuthContext } from '../context/AuthContext';
 
 function Login() {
   useEffect(() => {
-    document.title = 'Yussman - Login';
+    document.title = 'Muspa - Login';
   }, []);
 
   const sitekeys = import.meta.env.VITE_SITEKEY;

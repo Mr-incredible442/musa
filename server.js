@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.join(__dirname, 'yussman-client', 'dist')));
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 setInterval(() => logoutInactiveUsers(io), 5 * 60 * 1000);
 

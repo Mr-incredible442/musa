@@ -18,7 +18,7 @@ function Store() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    document.title = 'Store';
+    document.title = 'Muspa - Store';
   }, []);
 
   return (

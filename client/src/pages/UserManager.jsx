@@ -19,7 +19,7 @@ function UserManager() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    document.title = 'Yussman - Users';
+    document.title = 'Muspa - Users';
 
     apiCall
       .get(`${LOCAL_URL}/users`)

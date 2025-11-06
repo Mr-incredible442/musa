@@ -223,7 +223,7 @@ router.patch('/toggleuser/:userId', async (req, res) => {
 });
 
 //signup route
-router.post('/signup', verifyToken, async (req, res) => {
+router.post('/signup', async (req, res) => {
   const { firstName, lastName, number, password, role } = req.body;
 
   try {

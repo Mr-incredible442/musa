@@ -521,14 +521,13 @@ router.post('/:id/deletereceived/:receivedId', async (req, res) => {
 //add issued
 router.post('/:id/addissued', async (req, res) => {
   try {
-    const { name, code, to, quantity } = req.body;
+    const { name, code, quantity } = req.body;
     const { id } = req.params;
 
     const newIssuedObject = {
       _id: mongoose.Types.ObjectId(),
       code: Number(code),
       name: name.toLowerCase(),
-      to: to.toLowerCase(),
       quantity: Number(quantity),
       approved: false,
     };

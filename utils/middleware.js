@@ -39,7 +39,6 @@ export default function applyMiddlewares(app) {
           'script-src': [
             "'self'",
             (req, res) => `'nonce-${res.locals.nonce}'`,
-            'https://cloud.umami.is',
             'https://static.cloudflareinsights.com',
             'https://challenges.cloudflare.com',
           ],
@@ -47,9 +46,7 @@ export default function applyMiddlewares(app) {
           'img-src': ["'self'", 'data:', 'https:'],
           'connect-src': [
             "'self'",
-            'https://cloud.umami.is',
             'https://challenges.cloudflare.com',
-            'https://api-gateway.umami.dev',
             'https://muspa-app-gf9c6.ondigitalocean.app',
           ],
           'frame-src': ['https://challenges.cloudflare.com'],

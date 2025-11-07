@@ -11,7 +11,6 @@ import { BOMA_STORE_URL } from '../../../helpers/variables';
 function AddIssued({ children, product, clear, storeShift }) {
   const [show, setShow] = useState(false);
   const [quantity, setQuantity] = useState('');
-  const [to, setTo] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClose = () => {
@@ -37,7 +36,6 @@ function AddIssued({ children, product, clear, storeShift }) {
     const receivedData = {
       code: product.code,
       name: product.name,
-      to: to,
       quantity: Number(quantity),
     };
 
@@ -92,22 +90,7 @@ function AddIssued({ children, product, clear, storeShift }) {
                 readOnly
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label htmlFor='to'>To</Form.Label>
-              <Form.Select
-                id='to'
-                value={to}
-                required
-                autoFocus
-                onChange={(e) => setTo(e.target.value)}>
-                <option value=''>Select To</option>
-                {storeShift.shops.map((shop) => (
-                  <option key={shop} value={shop}>
-                    {shop}
-                  </option>
-                ))}
-              </Form.Select>
-            </Form.Group>
+
             <Form.Group className='mb-3'>
               <Form.Label htmlFor='quantity'>Quantity</Form.Label>
               <Form.Control

@@ -57,7 +57,7 @@ router.get('/:id', async (req, res) => {
 router.post('/:id/addtostock', async (req, res) => {
   try {
     const { id } = req.params;
-    const { code, name, section, quantity, unitPrice, priceBought } = req.body;
+    const { code, name, quantity, unitPrice, priceBought } = req.body;
 
     const updatedShift = await Register.findByIdAndUpdate(
       id,
@@ -70,7 +70,6 @@ router.post('/:id/addtostock', async (req, res) => {
             quantity: Number(quantity),
             priceBought: Number(priceBought),
             unitPrice: Number(unitPrice),
-            section: section.toLowerCase(),
           },
         },
       },
@@ -114,11 +113,11 @@ router.post('/:id/deletestock/:stockId', async (req, res) => {
   }
 });
 
-// update quantity, priceBought, unitPrice and section in a stock item
+// update quantity, priceBought, unitPrice in a stock item
 router.post('/:id/updatestock/:stockId', async (req, res) => {
   try {
     const { id, stockId } = req.params;
-    const { quantity, priceBought, unitPrice, section } = req.body;
+    const { quantity, priceBought, unitPrice } = req.body;
 
     const updatedShift = await Register.findOneAndUpdate(
       { _id: id, 'stock._id': mongoose.Types.ObjectId(stockId) },
@@ -127,7 +126,6 @@ router.post('/:id/updatestock/:stockId', async (req, res) => {
           'stock.$.quantity': Number(quantity),
           'stock.$.priceBought': Number(priceBought),
           'stock.$.unitPrice': Number(unitPrice),
-          'stock.$.section': section.toLowerCase(),
         },
       },
       {

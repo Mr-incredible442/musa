@@ -73,7 +73,6 @@ function Issued() {
             <th>Code</th>
             <th>Name</th>
             <th>Quantity</th>
-            <th>To</th>
             {user && user.role === 'admin' && <th>Action</th>}
           </tr>
         </thead>
@@ -83,7 +82,6 @@ function Issued() {
               <td>{item.code}</td>
               <td className='text-capitalize'>{item.name}</td>
               <td>{item.quantity}</td>
-              <td className='text-capitalize'>{item.to}</td>
               {user && user.role === 'admin' && (
                 <td className='d-flex justify-content-center align-items-center'>
                   <DeleteModal

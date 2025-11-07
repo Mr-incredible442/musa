@@ -38,7 +38,6 @@ function NewProductModal({ id }) {
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
   const [priceBought, setPriceBought] = useState('');
-  const [from, setFrom] = useState('');
 
   const handleClose = () => {
     setShow(false);
@@ -74,7 +73,6 @@ function NewProductModal({ id }) {
     setPrice('');
     setPriceBought('');
     setQuantity('');
-    setFrom('');
     setSearch('');
   };
 
@@ -93,7 +91,6 @@ function NewProductModal({ id }) {
       unitPrice: Number(price),
       quantity: Number(quantity),
       priceBought: Number(priceBought),
-      section: from.toLowerCase(),
     };
 
     apiCall
@@ -187,20 +184,6 @@ function NewProductModal({ id }) {
                     value={priceBought}
                     onChange={(e) => setPriceBought(e.target.value)}
                   />
-                </Form.Group>
-                <Form.Group className='mb-3'>
-                  <Form.Label>From</Form.Label>
-                  <Form.Select
-                    required
-                    value={from}
-                    onChange={(e) => setFrom(e.target.value)}>
-                    <option value=''>Open this select menu</option>
-                    <option value='local'>Local</option>
-                    <option value='mearaj'>Mearaj</option>
-                    <option value='ilyas'>Ilyas</option>
-                    <option value='outside'>Outside</option>
-                    <option value='chansa'>Chansa</option>
-                  </Form.Select>
                 </Form.Group>
                 <Button variant='primary' type='submit' disabled={isSubmiting}>
                   {isSubmiting ? 'Submitting...' : 'Submit'}

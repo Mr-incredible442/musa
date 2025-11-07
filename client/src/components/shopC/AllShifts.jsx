@@ -133,7 +133,7 @@ function AllShifts() {
                 <td>{shift.status}</td>
                 <td className='d-flex flex-row gap-1 justify-content-center'>
                   <Link
-                    to={`/shopc/${shift._id}`}
+                    to={`/shop/${shift._id}`}
                     style={{ textDecoration: 'none' }}>
                     <Button variant='outline-primary me-1' size='sm'>
                       V

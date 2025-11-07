@@ -9,11 +9,11 @@ function Dasboard() {
   return (
     <Container>
       <h1>Dasboard</h1>
-      <Link to={'/bomastore'}>Store</Link>
+      <Link to={'/store'}>Store</Link>
       <hr />
-      <Link to={'/bomaregister'}>Register</Link>
+      <Link to={'/register'}>Register</Link>
       <hr />
-      <Link to={'/shopc'}>Shop</Link>
+      <Link to={'/shop'}>Shop</Link>
       <hr />
     </Container>
   );

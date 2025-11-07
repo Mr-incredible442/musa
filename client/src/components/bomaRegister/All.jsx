@@ -78,7 +78,7 @@ function All() {
                 <td>{shift.status}</td>
                 <td className='d-flex flex-row gap-1 justify-content-center'>
                   <Link
-                    to={`/bomaregister/${shift._id}`}
+                    to={`/register/${shift._id}`}
                     style={{ textDecoration: 'none' }}>
                     <Button variant='outline-primary' size='sm'>
                       V

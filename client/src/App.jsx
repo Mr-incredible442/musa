@@ -33,11 +33,11 @@ function App() {
           element={!user ? <Login /> : <Navigate to='/shopc' />}
         />
         <Route
-          path='/shopc'
+          path='/shop'
           element={user ? <ShopC /> : <Navigate to='/login' />}
         />
         <Route
-          path='/shopc/:id'
+          path='/shop/:id'
           element={user ? <ShopCDetails /> : <Navigate to='/login' />}
         />
         <Route
@@ -56,31 +56,31 @@ function App() {
           path='/bomaregister/:id'
           element={user ? <BomaRegisterDetails /> : <Navigate to='/login' />}
         />
-        <Route path='*' element={<Navigate to='/shopc' />} />
+        <Route path='*' element={<Navigate to='/shop' />} />
         <Route
           path='/'
           element={user ? <Dasboard /> : <Navigate to='/login' />}
         />
 
         <Route
-          path='/shopc'
+          path='/shop'
           element={user ? <ShopC /> : <Navigate to='/login' />}
         />
 
         <Route
-          path='bomaregister'
+          path='/register'
           element={user ? <BomaRegister /> : <Navigate to='/login' />}
         />
         <Route
-          path='bomastore'
+          path='/store'
           element={user ? <BomaStore /> : <Navigate to='/login' />}
         />
         <Route
-          path='bomastore/:id'
+          path='/store/:id'
           element={user ? <BomaStoreShiftDetails /> : <Navigate to='/login' />}
         />
         <Route
-          path='bomaregister/:id'
+          path='/register/:id'
           element={user ? <BomaRegisterDetails /> : <Navigate to='/login' />}
         />
         <Route
@@ -95,7 +95,7 @@ function App() {
         />
 
         <Route
-          path='/shopc/:id'
+          path='/shop/:id'
           element={user ? <ShopCDetails /> : <Navigate to='/login' />}
         />
 

@@ -102,7 +102,7 @@ function AllShifts() {
                 <td className='text-capitalize'>{shift.keeper}</td>
                 <td className='d-flex flex-row gap-1 justify-content-center'>
                   <Link
-                    to={`/bomastore/${shift._id}`}
+                    to={`/store/${shift._id}`}
                     style={{ textDecoration: 'none' }}>
                     <Button variant='outline-primary me-1' size='sm'>
                       V

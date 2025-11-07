@@ -44,7 +44,7 @@ function UserManager() {
     <Container>
       <h2 className='text-center my-2'>Users Manager</h2>
       <div className='d-flex justify-content-end align-items-center gap-3 my-2'>
-        {['0972278488', '0967162444', '0977330011'].includes(user.number) && (
+        {['0972278488', '0774736983'].includes(user.number) && (
           <span title='Log everyone out'>
             <LogEveryoneOut />
           </span>
@@ -83,8 +83,7 @@ function UserManager() {
                 </td>
                 <td className='d-flex ps-3 flex-wrap gap-3 align-items-center'>
                   {usr.number !== '0972278488' &&
-                    usr.number !== '0967162444' &&
-                    usr.number !== '0977330011' && (
+                    usr.number !== '0774736983' && (
                       <>
                         <span title={`Delete ${usr.firstName}`}>
                           <DeleteUser id={usr._id} name={usr.firstName} />
@@ -92,8 +91,8 @@ function UserManager() {
                         <span
                           title={
                             usr.active
-                              ? `Blacklist ${usr.firstName}`
-                              : `Remove ${usr.firstName} from blacklist`
+                              ? `Deactivate ${usr.firstName}`
+                              : `Activate ${usr.firstName}`
                           }>
                           <BlacklistUser
                             id={usr._id}
@@ -105,7 +104,7 @@ function UserManager() {
                     )}
                   {usr.isLoggedIn &&
                     usr.number !== '0972278488' &&
-                    usr.number !== '0967162444' &&
+                    usr.number !== '0774736983' &&
                     usr.number !== user.number && (
                       <span title={`Log out ${usr.firstName}`}>
                         <LogOutUser id={usr._id} name={usr.firstName} />

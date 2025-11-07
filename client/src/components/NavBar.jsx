@@ -87,13 +87,13 @@ function NavBar() {
             {' '}
             <Nav className='me-auto'>
               <>
-                <Nav.Link as={Link} to={'/shopc'}>
+                <Nav.Link as={Link} to={'/shop'}>
                   Shop
                 </Nav.Link>
-                <Nav.Link as={Link} to={'/bomastore'}>
+                <Nav.Link as={Link} to={'/store'}>
                   Store
                 </Nav.Link>
-                <Nav.Link as={Link} to={'/bomaregister'}>
+                <Nav.Link as={Link} to={'/register'}>
                   Register
                 </Nav.Link>
                 {user.role === 'admin' && (

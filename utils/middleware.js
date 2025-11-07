@@ -48,6 +48,7 @@ export default function applyMiddlewares(app) {
             "'self'",
             'https://challenges.cloudflare.com',
             'https://muspa-app-gf9c6.ondigitalocean.app',
+            'https://muspa.net',
           ],
           'frame-src': ['https://challenges.cloudflare.com'],
         },

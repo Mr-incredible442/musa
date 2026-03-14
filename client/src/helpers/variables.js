@@ -6,3 +6,4 @@ export const LOCAL_URL = `${BASE_URL}/api`;
 export const SHOPC_URL = `${BASE_URL}/api/shopc`;
 export const BOMA_STORE_URL = `${BASE_URL}/api/boma/store`;
 export const BOMA_REGISTER_URL = `${BASE_URL}/api/boma/register`;
+export const REPORT_URL = `${BASE_URL}/api/report`;

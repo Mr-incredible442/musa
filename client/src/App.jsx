@@ -17,6 +17,9 @@ import BomaRegisterDetails from './components/bomaRegister/BomaRegisterDetails';
 import BomaStore from './pages/BomaStore';
 import BomaStoreShiftDetails from './components/bomaStore/ShiftDetails';
 
+import Report from './pages/Report';
+import ReportDetail from './components/report/ReportDetail';
+
 function App() {
   const { user } = useContext(AuthContext);
 
@@ -88,6 +91,26 @@ function App() {
           element={
             user && user.role === 'admin' ? (
               <UserManager />
+            ) : (
+              <Navigate to='/login' />
+            )
+          }
+        />
+        <Route
+          path='/report'
+          element={
+            user && user.role === 'admin' ? (
+              <Report />
+            ) : (
+              <Navigate to='/login' />
+            )
+          }
+        />
+        <Route
+          path='/report/:id'
+          element={
+            user && user.role === 'admin' ? (
+              <ReportDetail />
             ) : (
               <Navigate to='/login' />
             )

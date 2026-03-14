@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Dasboard() {
+  const { user } = useContext(AuthContext);
   useEffect(() => {
     document.title = 'Muspa - Dashboard';
   }, []);
@@ -15,6 +17,12 @@ function Dasboard() {
       <hr />
       <Link to={'/shop'}>Shop</Link>
       <hr />
+      {user?.role === 'admin' && (
+        <>
+          <Link to={'/report'}>Report</Link>
+          <hr />
+        </>
+      )}
     </Container>
   );
 }
